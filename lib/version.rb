@@ -1,4 +1,4 @@
-module App
+class App
   VERSION = "0.1.0"
 end
 

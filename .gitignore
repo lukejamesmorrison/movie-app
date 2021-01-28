@@ -9,3 +9,6 @@
 
 # rspec failure tracking
 .rspec_status
+
+# Screen captures
+screen_capture*.mov

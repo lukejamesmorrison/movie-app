@@ -11,4 +11,7 @@ require "app"
 # Pry.start
 
 require "irb"
-IRB.start(__FILE__)
+# IRB.start(__FILE__)
+
+app = App.new
+app.run()
