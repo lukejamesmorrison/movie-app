@@ -2,12 +2,14 @@ PATH
   remote: .
   specs:
     movie-app (0.1.0)
+      colorize
       nokogiri
       open-uri
 
 GEM
   remote: https://rubygems.org/
   specs:
+    colorize (0.8.1)
     diff-lcs (1.4.4)
     mini_portile2 (2.5.0)
     nokogiri (1.11.1)

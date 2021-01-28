@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   # Gems
   spec.add_dependency "nokogiri"
   spec.add_dependency "open-uri"
+  spec.add_dependency "colorize"
 end

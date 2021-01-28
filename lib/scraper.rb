@@ -4,16 +4,14 @@ require 'movie'
 
 class Scraper
 
-    
-
     def initialize()
         @base_url = "https://www.imdb.com"
         # self.get_movie_from_web('home alone')
     end
 
-    
     def get_movie_from_web(title)
-        url = @base_url + "/find?q=#{title}&s=tt&ref_=fn_tt_pop"
+        url = @base_url + "/find?q=#{title}&s=tt&ttype=ft&ref_=fn_ft"
+
         # Instantiate new Movie
         movie = Movie.new
 
@@ -35,7 +33,5 @@ class Scraper
         
         return movie
     end
-
-
 
 end
