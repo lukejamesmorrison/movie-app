@@ -4,18 +4,30 @@ require "scraper"
 require "colorize"
 require "watchlist"
 
+##
+# This class is the entire application wrapper.  It uses a Scraper to get information 
+# from IMDB and has a Watchlist where the user can save movies for later.
+
 class App
+
+  ##
+  # Initialize the app with a Scraper and a Watchlist.
 
   def initialize()
     @scraper = Scraper.new
     @watchlist = Watchlist.new
   end
 
+  ##
+  # Run application.
+
   def run()
-    # Display greeting
     self.display_greeting()
     self.main_menu()
   end
+
+  ##
+  # Display initial greeting.
 
   def display_greeting()
     puts "####################################################################################"
@@ -36,8 +48,11 @@ class App
     puts "####################################################################################\n\n"
   end
 
+  ##
+  # Display a header block with +text+.
+
   def display_header(text)
-    width = 35  # The total width of the block
+    width = 84  # The total width of the block
     padding = 2 # The horizontal padding
     space = width - 2 # The inner (empty) space width
     outer = ("#" * width) + "\n" # The upper or lower border row
@@ -47,8 +62,10 @@ class App
     puts (outer + spacer + text + spacer + outer + "\n")
   end
 
+  ##
+  # Show main menu.
+
   def main_menu()
-    # Display initial menu
     self.display_header('main menu')
     puts "What would you like to do?\n".blue
     puts "1.  Search for a movie"
@@ -78,10 +95,14 @@ class App
 
   end
 
+  ##
+  # Search for a movie by title based on user input.
+
   def search_for_movie()
     # Get user input
     print "What is the name of the movie you wish to find? ".blue
     title = gets.chomp.to_s
+    puts ""
     movie = @scraper.get_movie_from_web(title)
 
     # display movie info
@@ -89,20 +110,30 @@ class App
     self.movie_search_menu(movie)
   end
 
+  ##
+  # Display information for a given +movie+.
+
   def display_movie_info(movie)
     self.display_header('movie information')
-    puts "Title:      #{movie.title}".green
-    puts "Year:       #{movie.year}".green
-    puts ""
-    puts "Synopsis:   #{movie.plot}\n\n".green
+    puts "Title:      #{movie.title}"
+    puts "Year:       #{movie.year}\n"
+    puts "Synopsis:   #{movie.plot}\n"
+
+    puts "Director:   #{movie.director}\n"
+    puts "Writer:     #{movie.writer}\n"
+    puts "Cast:       #{movie.cast}\n"
+    puts "\n"
   end
+
+  ##
+  # Show the movie search menu based on a given +movie+.
 
   def movie_search_menu(movie)
     # Display movie search menu
     puts "What would you like to do?\n".blue
-    puts "1.  Save movie to wishlist"
+    puts "1.  Save movie to Wishlist"
     puts "2.  Search again"
-    puts "3.  Return to main menu"
+    puts "3.  Return to Main Menu"
     puts ""
 
     # Get user selection
@@ -126,6 +157,9 @@ class App
     end
   end
 
+  ##
+  # Display current watchlist.
+
   def display_watchlist()
     self.display_header('watchlist')
     @watchlist.items.each_with_index do |movie, index|
@@ -134,11 +168,21 @@ class App
     puts ""
   end
 
+  ##
+  # Display watchlist menu.
+
   def watchlist_menu()
+
+    # Redirect to menu if watchlist is empty
+    if(@watchlist.is_empty())
+      puts "Your watchlist is currently empty.".red
+      self.main_menu()
+    end
+
     # Display watchlist menu
     puts "What would you like to do?\n".blue
-    puts "1.  View details for movie"
-    puts "2.  Return to main menu"
+    puts "1.  View details for Movie"
+    puts "2.  Return to Main Menu"
     puts ""
 
     # Get user selection
@@ -164,21 +208,30 @@ class App
     end
   end
 
+  ##
+  # Display information for a given +movie+.
+
   def display_movie(movie)
     self.display_movie_info(movie)
     self.movie_menu(movie)
   end
 
+  ##
+  # Display the movie menu for a given +movie+.
+
   def movie_menu(movie)
+    options = [
+      'Remove movie from Watchlist',
+      'Return to Watchlist',
+      'Return to Main Menu'
+    ]
     # Display movie menu
     puts "What would you like to do?\n".blue
-    puts "1.  Remove from watchlist"
-    puts "2.  Return to watchlist"
-    puts "3.  Return to main menu"
+    options.each_with_index { |option, index| puts "#{index+1}.  #{option}" }
     puts ""
 
     # Get user selection
-    print "Enter a number [1-3]: ".blue
+    print "Enter an option [1-#{options.size}]: ".blue
     selection = gets.chomp.to_i
     puts ""
 
@@ -186,8 +239,12 @@ class App
     case selection
       when 1
         @watchlist.remove(movie)
-        self.display_watchlist()
-        self.watchlist_menu()
+        if(@watchlist.is_empty())
+          self.main_menu()
+        else
+          self.display_watchlist()
+          self.watchlist_menu()
+        end
       when 2
         self.display_watchlist()
         self.watchlist_menu()

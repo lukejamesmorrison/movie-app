@@ -1,16 +1,32 @@
 [
   {
-    "title": "Interstellar",
-    "image": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX32_CR0,0,32,44_AL_.jpg",
-    "link": "https://www.imdb.com/title/tt0816692/",
-    "year": "2014",
-    "plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival."
-  },
-  {
     "title": "Home Alone",
     "image": "https://m.media-amazon.com/images/M/MV5BMzFkM2YwOTQtYzk2Mi00N2VlLWE3NTItN2YwNDg1YmY0ZDNmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX32_CR0,0,32,44_AL_.jpg",
     "link": "https://www.imdb.com/title/tt0099785/",
     "year": "1990",
-    "plot": "An eight-year-old troublemaker must protect his house from a pair of burglars when he is accidentally left home alone by his family during Christmas vacation."
+    "plot": "An eight-year-old troublemaker must protect his house from a pair of burglars when he is accidentally left home alone by his family during Christmas vacation.",
+    "director": "Chris Columbus",
+    "writer": "John Hughes",
+    "cast": "Macaulay Culkin, Joe Pesci, Daniel Stern"
+  },
+  {
+    "title": "Home Alone 2: Lost in New York",
+    "image": "https://m.media-amazon.com/images/M/MV5BNDI1MzM0Y2YtYmIyMS00ODE3LTlhZjEtZTUyNmEzMTNhZWU5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX32_CR0,0,32,44_AL_.jpg",
+    "link": "https://www.imdb.com/title/tt0104431/",
+    "year": "1992",
+    "plot": "One year after Kevin McCallister was left home alone and had to defeat a pair of bumbling burglars, he accidentally finds himself stranded in New York City - and the same criminals are not far behind.",
+    "director": "Chris Columbus",
+    "writer": "John Hughes",
+    "cast": "Macaulay Culkin, Joe Pesci, Daniel Stern"
+  },
+  {
+    "title": "Sunshine",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTU5Nzg2OTk2NF5BMl5BanBnXkFtZTYwNTc1ODM3._V1_UX32_CR0,0,32,44_AL_.jpg",
+    "link": "https://www.imdb.com/title/tt0448134/",
+    "year": "2007",
+    "plot": "A team of international astronauts are sent on a dangerous mission to reignite the dying Sun with a nuclear fission bomb in 2057.",
+    "director": "Danny Boyle",
+    "writer": "Alex Garland",
+    "cast": "Cillian Murphy, Rose Byrne, Chris Evans"
   }
 ]
